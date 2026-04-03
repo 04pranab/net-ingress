@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" viewBox="0 0 860 340" style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0d1117">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#8b949e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-dash" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#30363d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="430" y="20" text-anchor="middle" fill="#8b949e" font-size="11">module dependency map — arrows point from dependent → dependency</text>
+
+  <!-- Row 3 top: dispatch + net_stats -->
+  <rect x="220" y="40" width="160" height="56" rx="8" fill="#1a2035" stroke="#3060a0" stroke-width="1"/>
+  <text x="300" y="64" text-anchor="middle" fill="#b8cce8" font-size="13" font-weight="600">dispatch</text>
+  <text x="300" y="82" text-anchor="middle" fill="#6888b8" font-size="11">dispatch.h / dispatch.c</text>
+
+  <rect x="420" y="40" width="160" height="56" rx="8" fill="#2a2310" stroke="#7a6020" stroke-width="1"/>
+  <text x="500" y="64" text-anchor="middle" fill="#e8d8a0" font-size="13" font-weight="600">net_stats</text>
+  <text x="500" y="82" text-anchor="middle" fill="#a89060" font-size="11">net_stats.h / .c</text>
+
+  <!-- Row 2: icmp, ipv4, tcp -->
+  <rect x="80" y="152" width="160" height="56" rx="8" fill="#2a1f1a" stroke="#7a4030" stroke-width="1"/>
+  <text x="160" y="176" text-anchor="middle" fill="#e8c4b8" font-size="13" font-weight="600">icmp</text>
+  <text x="160" y="194" text-anchor="middle" fill="#a86050" font-size="11">icmp.h / icmp.c</text>
+
+  <rect x="290" y="152" width="160" height="56" rx="8" fill="#1a2f2a" stroke="#2d6b5e" stroke-width="1"/>
+  <text x="370" y="176" text-anchor="middle" fill="#b8e0d4" font-size="13" font-weight="600">ipv4</text>
+  <text x="370" y="194" text-anchor="middle" fill="#6baa98" font-size="11">ipv4.h / ipv4.c</text>
+
+  <rect x="500" y="152" width="160" height="56" rx="8" fill="#2a1f1a" stroke="#7a4030" stroke-width="1"/>
+  <text x="580" y="176" text-anchor="middle" fill="#e8c4b8" font-size="13" font-weight="600">tcp</text>
+  <text x="580" y="194" text-anchor="middle" fill="#a86050" font-size="11">tcp.h / tcp.c</text>
+
+  <!-- Row 1: packet + netbuf -->
+  <rect x="290" y="258" width="160" height="56" rx="8" fill="#1a1f35" stroke="#3d4580" stroke-width="1"/>
+  <text x="370" y="282" text-anchor="middle" fill="#c9d1e8" font-size="13" font-weight="600">packet</text>
+  <text x="370" y="300" text-anchor="middle" fill="#8088b0" font-size="11">packet.h / packet.c</text>
+
+  <!-- Row 0 foundation: net_types + netbuf -->
+  <rect x="80" y="258" width="160" height="56" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="160" y="282" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600">net_types</text>
+  <text x="160" y="300" text-anchor="middle" fill="#8b949e" font-size="11">net_types.h (shared)</text>
+
+  <rect x="500" y="258" width="160" height="56" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="580" y="282" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600">netbuf</text>
+  <text x="580" y="300" text-anchor="middle" fill="#8b949e" font-size="11">netbuf.h / netbuf.c</text>
+
+  <!-- dispatch → icmp -->
+  <path d="M260 96 L190 152" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- dispatch → ipv4 -->
+  <path d="M300 96 L360 152" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- dispatch → tcp -->
+  <path d="M340 96 L550 152" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- dispatch → net_stats -->
+  <line x1="420" y1="68" x2="380" y2="68" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- icmp → ipv4 (checksum reuse) -->
+  <line x1="240" y1="180" x2="290" y2="180" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- tcp → ipv4 -->
+  <line x1="500" y1="180" x2="450" y2="180" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ipv4 → packet -->
+  <line x1="370" y1="208" x2="370" y2="258" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- icmp → packet -->
+  <path d="M160 208 L160 232 L310 232 L310 258" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- tcp → packet -->
+  <path d="M580 208 L580 232 L430 232 L430 258" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- net_types (shared, dashed) -->
+  <line x1="160" y1="208" x2="160" y2="258" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-dash)"/>
+
+  <!-- legend -->
+  <line x1="640" y1="30" x2="670" y2="30" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="676" y="34" fill="#8b949e" font-size="10">depends on</text>
+  <line x1="640" y1="46" x2="670" y2="46" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow-dash)"/>
+  <text x="676" y="50" fill="#8b949e" font-size="10">shared types</text>
+</svg>
