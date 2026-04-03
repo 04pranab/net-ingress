@@ -3,7 +3,7 @@
 **A clean, OS-oriented network ingress subsystem written in C**
 
 Welcome to **net-ingress**.  
-This project explores one simple but powerful question:
+This project explores simple but powerful questions:
 
 > *What actually happens to network data when it first enters an operating system?*
 
