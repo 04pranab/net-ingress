@@ -7,6 +7,10 @@ This project explores one simple but powerful question:
 
 > *What actually happens to network data when it first enters an operating system?*
 
+Then:
+
+> *Can kernel-level packet ingress be designed with provable memory and determinism guarantees?*
+
 Not at the application level.  
 Not inside a full TCP/IP stack.  
 But **right at the boundary where raw bytes become meaningful packets**.
